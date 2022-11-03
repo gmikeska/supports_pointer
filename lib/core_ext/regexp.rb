@@ -29,13 +29,13 @@ class Regexp
       any:".",
       alpha:"[a-zA-Z]",
       numeric:"\\d",
-      nonnumeric:"\\D",
-      alphanumeric:"\\w",
-      nonalphanumeric:"\\W",
-      whitespace:"\\s",
-      nonwhitespace:"\\S",
+      line_end:"$",
       line_start:"^",
-      line_end:"$"
+      nonnumeric:"\\D",
+      whitespace:"\\s",
+      alphanumeric:"\\w",
+      nonwhitespace:"\\S",
+      nonalphanumeric:"\\W"
     }
     TYPE_MATCHER_DEFAULTS = {
       string:".*",
