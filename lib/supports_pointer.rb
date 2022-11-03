@@ -10,7 +10,7 @@ module SupportsPointer
   included do
     @@pointers = {}
     @@segments = {}
-    def self.parses_pointer(name, **args)
+    def self.parses_pointer(name, args)
       if(!!args[:template])
         if(args[:template].is_a?(Regexp::Template))
           @@pointers[name.to_sym] = {}
@@ -32,16 +32,18 @@ module SupportsPointer
     def self.pointers
       return @@pointers
     end
+
     def self.pointer_types
       return @@pointers.keys
     end
+
     def self.is_pointer?(ptr)
       begin
         result = self.resolve_pointer(ptr)
       rescue
         return false
       end
-      return true
+      return !!result
     end
 
     def self.pointer_type(ptr)
