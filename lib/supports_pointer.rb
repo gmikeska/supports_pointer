@@ -10,27 +10,41 @@ module SupportsPointer
   included do
     @@pointers = {}
     @@segments = {}
-    def self.parses_pointer(name, args)
+    
+    def self.parses_pointer(name, **args)
+      if(!@@pointers[self.name.to_sym])
+        @@pointers[self.name.to_sym] = {}
+      end
+      if(!@@pointers[self.name.to_sym][name.to_sym])
+        @@pointers[self.name.to_sym][name.to_sym] = {}
+      end
+
       if(!!args[:template])
         if(args[:template].is_a?(Regexp::Template))
-          @@pointers[name.to_sym] = {}
-          @@pointers[name.to_sym][:matcher] = args[:template].rx
+          @@pointers[self.name.to_sym][name.to_sym][:matcher] = args[:template].rx
         elsif(args[:template].is_a?(Regexp))
-          @@pointers[name.to_sym] = {}
-          @@pointers[name.to_sym][:matcher] = args[:template]
+          @@pointers[self.name.to_sym][name.to_sym] = {}
+          @@pointers[self.name.to_sym][name.to_sym][:matcher] = args[:template]
         elsif(args[:template].is_a?(String))
           atoms = [:"{",:"(?<segment_name>\\w*)" ,:"}"]
           segment_matcher = Regexp::Template.new(atoms:atoms)
           segment_names = args[:template].scan(segment_matcher)
         end
       elsif(!args[:template] && SupportsPointer.const_defined?(name.to_s.upcase+"_PARSER_ATOMS"))
-          @@pointers[name.to_sym] = {}
-          @@pointers[name.to_sym][:matcher] = Regexp::Template.new(atoms:self.const_get((name.to_s.upcase+"_PARSER_ATOMS").to_sym)).rx
+          @@pointers[self.name.to_sym][name.to_sym][:matcher] = Regexp::Template.new(atoms:self.const_get((name.to_s.upcase+"_PARSER_ATOMS").to_sym)).rx
       end
     end
-
+    def self.uses_pointer(name, **args)
+      parser = args[:from].pointers[name.to_sym]
+      if(!@@pointers[self.name.to_sym])
+        @@pointers[self.name.to_sym] = {}
+      end
+      if(!@@pointers[self.name.to_sym][name])
+        @@pointers[self.name.to_sym][name] = parser
+      end
+    end
     def self.pointers
-      return @@pointers
+      return @@pointers[self.name.to_sym]
     end
 
     def self.pointer_types
@@ -46,27 +60,48 @@ module SupportsPointer
       return !!result
     end
 
+    def self.get_type(pointer_type_name)
+      pointer_type_name = pointer_type_name.to_sym
+      if(!!@@pointers[self.name.to_sym] && @@pointers[self.name.to_sym].keys.include?(pointer_type_name))
+        return @@pointers[self.name.to_sym][pointer_type_name]
+      else
+        return superclass.get_type(pointer_type_name)
+      end
+    end
     def self.pointer_type(ptr)
       result = false
-      @@pointers.each do |type, data|
-        if(ptr.match(data[:matcher]))
-          result = type
+      if(!!@@pointers[self.name.to_sym])
+        @@pointers[self.name.to_sym].each do |type, data|
+          if(ptr.match(data[:matcher]))
+            result = type
+          end
         end
+        if(!result)
+          result = superclass.pointer_type(ptr)
+        end
+        return result
+      else
+        return superclass.pointer_type(ptr)
       end
-      return result
     end
 
     def self.parse_pointer(ptr)
       type = pointer_type(ptr)
-      matcher = @@pointers[type][:matcher]
-      result = ptr.match(matcher).named_captures.symbolize_keys
-      result[:pointer_type] = type
+      if(!!type)
+        type_def = self.get_type(type.to_sym)
+        matcher = type_def[:matcher]
+        result = ptr.match(matcher).named_captures.symbolize_keys
+        result[:pointer_type] = type
+      end
       return result
     end
 
     def self.resolve_pointer(ptr)
       data = self.parse_pointer(ptr)
-      @@pointers[data[:pointer_type]][:resolve].call(data)
+      type_def = self.get_type(data[:pointer_type].to_sym)
+      if(!!data && !!data[:pointer_type])
+        type_def[:resolve].call(data)
+      end
     end
 
     def self.pointer_generation(&block)
@@ -74,7 +109,7 @@ module SupportsPointer
     end
 
     def self.pointer_resolution(name,&block)
-      @@pointers[name.to_sym][:resolve] = block.to_proc
+      @@pointers[self.name.to_sym][name.to_sym][:resolve] = block.to_proc
     end
 
     def self.to_pointer(object)
@@ -86,8 +121,8 @@ module SupportsPointer
     end
 
     def self.method_missing(m,*args, &block)
-      if(@@pointers[m.match(/resolve_(?<name>\w*)/)["name"]])
-        return @@pointers[m.match(/resolve_(?<name>\w*)/)["name"].to_sym][:resolve].call(*args)
+      if(@@pointers[self.name][m.match(/resolve_(?<name>\w*)/)["name"]])
+        return @@pointers[self.name][m.match(/resolve_(?<name>\w*)/)["name"].to_sym][:resolve].call(*args)
       end
       # if(m.to_s.include? "generate_" &&  @segment_names.include?(m.to_s.split('_')[1]))
       #   @segments[m.to_s.split('_')[1]] = block
