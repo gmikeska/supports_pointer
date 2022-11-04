@@ -10,7 +10,7 @@ module SupportsPointer
   included do
     @@pointers = {}
     @@segments = {}
-    
+
     def self.parses_pointer(name, **args)
       if(!@@pointers[self.name.to_sym])
         @@pointers[self.name.to_sym] = {}
@@ -44,7 +44,19 @@ module SupportsPointer
       end
     end
     def self.pointers
-      return @@pointers[self.name.to_sym]
+      if(!!@@pointers && !!@@pointers[self.name.to_sym])
+        if(superclass.respond_to?(:pointers))
+          return superclass.pointers.merge(@@pointers[self.name.to_sym])
+        else
+          return @@pointers[self.name.to_sym]
+        end
+      else
+        if(superclass.respond_to?(:pointers))
+          return superclass.pointers
+        else
+          return {}
+        end
+      end
     end
 
     def self.pointer_types
@@ -53,42 +65,30 @@ module SupportsPointer
 
     def self.is_pointer?(ptr)
       begin
-        result = self.resolve_pointer(ptr)
+        result = !!self.resolve_pointer(ptr)
       rescue
         return false
       end
-      return !!result
+      return result
     end
 
-    def self.get_type(pointer_type_name)
-      pointer_type_name = pointer_type_name.to_sym
-      if(!!@@pointers[self.name.to_sym] && @@pointers[self.name.to_sym].keys.include?(pointer_type_name))
-        return @@pointers[self.name.to_sym][pointer_type_name]
-      else
-        return superclass.get_type(pointer_type_name)
-      end
-    end
     def self.pointer_type(ptr)
-      result = false
-      if(!!@@pointers[self.name.to_sym])
-        @@pointers[self.name.to_sym].each do |type, data|
-          if(ptr.match(data[:matcher]))
+      result = nil
+      self.pointers.each do |type, data|
+        if(ptr.match(data[:matcher]))
+          data = ptr.match(data[:matcher]).named_captures.symbolize_keys
+          if(data.none?(""))
             result = type
           end
         end
-        if(!result)
-          result = superclass.pointer_type(ptr)
-        end
-        return result
-      else
-        return superclass.pointer_type(ptr)
       end
+      return result
     end
 
     def self.parse_pointer(ptr)
       type = pointer_type(ptr)
       if(!!type)
-        type_def = self.get_type(type.to_sym)
+        type_def = self.pointers[type.to_sym]
         matcher = type_def[:matcher]
         result = ptr.match(matcher).named_captures.symbolize_keys
         result[:pointer_type] = type
@@ -98,9 +98,8 @@ module SupportsPointer
 
     def self.resolve_pointer(ptr)
       data = self.parse_pointer(ptr)
-      type_def = self.get_type(data[:pointer_type].to_sym)
       if(!!data && !!data[:pointer_type])
-        type_def[:resolve].call(data)
+        return self.pointers[data[:pointer_type].to_sym][:resolve].call(data)
       end
     end
 
