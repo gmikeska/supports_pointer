@@ -32,6 +32,11 @@ module SupportsPointer
         end
       elsif(!args[:template] && SupportsPointer.const_defined?(name.to_s.upcase+"_PARSER_ATOMS"))
           @@pointers[self.name.to_sym][name.to_sym][:matcher] = Regexp::Template.new(atoms:self.const_get((name.to_s.upcase+"_PARSER_ATOMS").to_sym)).rx
+      elsif(!args[:template] && !!args[:parse] )
+          @@pointers[self.name.to_sym][name.to_sym][:parser] = args[:parse]
+      end
+      if(!!args[:resolve])
+        @@pointers[self.name.to_sym][name.to_sym][:resolve] = args[:resolve]
       end
     end
     def self.uses_pointer(name, **args)
@@ -42,6 +47,9 @@ module SupportsPointer
       if(!@@pointers[self.name.to_sym][name])
         @@pointers[self.name.to_sym][name] = parser
       end
+    end
+    def pointers
+      self.class.pointers
     end
     def self.pointers
       if(!!@@pointers && !!@@pointers[self.name.to_sym])
@@ -60,7 +68,7 @@ module SupportsPointer
     end
 
     def self.pointer_types
-      return @@pointers.keys
+      return self.pointers.keys
     end
 
     def self.is_pointer?(ptr)
@@ -75,65 +83,92 @@ module SupportsPointer
     def self.pointer_type(ptr)
       result = nil
       self.pointers.each do |type, data|
-        if(ptr.match(data[:matcher]))
+        if(!!data[:matcher] && ptr.match(data[:matcher]))
           data = ptr.match(data[:matcher]).named_captures.symbolize_keys
           if(data.none?(""))
             result = type
           end
+        elsif(!!data[:parser] && !!data[:parser].call(ptr))
+          result = type
         end
       end
       return result
     end
 
-    def self.parse_pointer(ptr)
-      type = pointer_type(ptr)
+    def self.parse_pointer(ptr, **args)
+
+      if(!!args[:type])
+        type = args[:type]
+      else
+        type = pointer_type(ptr)
+      end
+
       if(!!type)
-        type_def = self.pointers[type.to_sym]
-        matcher = type_def[:matcher]
-        result = ptr.match(matcher).named_captures.symbolize_keys
-        result[:pointer_type] = type
+        return self.send("parse_#{type.to_s}_pointer",ptr)
+      else
+        raise NameError.new("Unknown pointer type '#{pointer_name}'.", pointer_name)
       end
       return result
     end
 
     def self.resolve_pointer(ptr)
       data = self.parse_pointer(ptr)
-      if(!!data && !!data[:pointer_type])
-        return self.pointers[data[:pointer_type].to_sym][:resolve].call(data)
+      if(!!data && !!data[:type])
+        return self.send("resolve_#{data[:type]}_pointer", data)
       end
     end
 
-    def self.pointer_generation(&block)
-      @pointer_generation = block
+    def self.pointer_generation(name,&block)
+      @@pointers[self.name.to_sym][name.to_sym][:generate] = block.to_proc
     end
 
     def self.pointer_resolution(name,&block)
-      @@pointers[self.name.to_sym][name.to_sym][:resolve] = block.to_proc
-    end
-
-    def self.to_pointer(object)
-      if(@pointer_generation)
-        return @pointer_generation.call(self)
-      elsif(@mode == :split)
-        return [object.class.name, object.id].join(":")
-      end
+      pointers[name.to_sym][:resolve] = block.to_proc
     end
 
     def self.method_missing(m,*args, &block)
-      if(@@pointers[self.name][m.match(/resolve_(?<name>\w*)/)["name"]])
-        return @@pointers[self.name][m.match(/resolve_(?<name>\w*)/)["name"].to_sym][:resolve].call(*args)
+
+      if(m.to_s.match?(/resolve_(?<pointer_name>\w*)_pointer/))
+        pointer_name = m.to_s.match(/resolve_(?<pointer_name>\w*)_pointer/)[:pointer_name]
+        if(self.pointers.keys.include?(pointer_name.to_sym))
+          if(args[0].is_a? Hash)
+            return self.pointers[pointer_name.to_sym][:resolve].call(args[0])
+          elsif(args[0].is_a? String)
+            return self.pointers[pointer_name.to_sym][:resolve].call(self.send("parse_#{pointer_name}_pointer", args[0]))
+          end
+        else
+          raise NameError.new("Unknown pointer type. Pointer type '#{pointer_name}' not defined in #{self.name}.", pointer_name)
+        end
+      end
+
+      if(m.to_s.match?(/generate_(?<pointer_name>\w*)_pointer/))
+        pointer_name = m.to_s.match(/generate_(?<pointer_name>\w*)_pointer/)[:pointer_name]
+        if(self.pointers.keys.include?(pointer_name.to_sym) && !!self.pointers[pointer_name.to_sym][:generate])
+          return self.pointers[pointer_name.to_sym][:generate].call(args[0])
+        else
+          raise NameError.new("Unknown pointer type. Pointer type '#{pointer_name}' not defined in #{self.name}.", pointer_name)
+        end
+      end
+
+
+      if(m.to_s.match?(/parse_(?<pointer_name>\w*)_pointer/))
+        pointer_name = m.to_s.match(/parse_(?<pointer_name>\w*)_pointer/)[:pointer_name]
+
+        if(self.pointers.keys.include?(pointer_name.to_sym))
+          if(!!self.pointers[pointer_name.to_sym][:matcher])
+            data = args[0].match(self.pointers[pointer_name.to_sym][:matcher]).named_captures.symbolize_keys
+          elsif(!!self.pointers[pointer_name.to_sym][:parser])
+            data = self.pointers[pointer_name.to_sym][:parser].call(args[0])
+          end
+          data[:type] = pointer_name
+          return data
+        else
+          raise NameError.new("Unknown pointer type. Pointer type '#{pointer_name}' not defined in #{self.name}.", pointer_name)
+        end
       end
       # if(m.to_s.include? "generate_" &&  @segment_names.include?(m.to_s.split('_')[1]))
       #   @segments[m.to_s.split('_')[1]] = block
       # end
     end
-    def to_pointer
-      return self.class.pointer_generation.call(self)
-    end
   end
 end
-
-
-# pointer_format /(?<model> \w*):(?<param>\w*)/
-
-# pointer_format "{model_name}:{parameter}"
