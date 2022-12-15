@@ -51,6 +51,18 @@ This will allow the Widget class to access the handle pointer.
 A pointer can be parsed by calling ```parse_pointer``` on any model or object
 which supports the pointer type in question.
 
+When declaring model & model instance pointers, it may be helpful to declare a ```to_pointer``` method, returning ```generate_model_pointer``` and ```generate_model_instance_pointer```
+respectively:
+
+```ruby
+  def self.to_pointer
+    return generate_model_pointer(self)
+  end
+  def to_pointer
+    return generate_model_instance_pointer(self)
+  end
+```
+
 ## Installation
 Add this line to your application's Gemfile:
 
