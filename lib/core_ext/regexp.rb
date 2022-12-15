@@ -330,6 +330,9 @@ class Regexp
       end
       return atoms
     end
+    def self.group(atoms)
+      return "[#{atoms.join("")}]"
+    end
     def group(atoms)
       return "[#{atoms.join("")}]"
     end

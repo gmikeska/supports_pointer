@@ -1,0 +1,22 @@
+<%= form_with(model: settings_model) do |form| %>
+  <% if settings_model.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(settings_model.errors.count, "error") %> prohibited this settings_model from being saved:</h2>
+
+      <ul>
+        <% settings_model.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :data, style: "display: block" %>
+    <%= form.text_field :data %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

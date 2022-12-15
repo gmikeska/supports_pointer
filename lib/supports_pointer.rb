@@ -1,10 +1,17 @@
 require "core_ext/regexp"
+require "core_ext/string"
 require "supports_pointer/version"
 require "supports_pointer/railtie"
 
 module SupportsPointer
   MODEL_PARSER_ATOMS = [:"(?<model_name>\\w*)"]
+  MODEL_RESOLVER = Proc.new{ |data| data[:model_name].classify.constantize }
+  MODEL_GENERATOR = Proc.new{ |data| data.name }
+
   MODEL_INSTANCE_PARSER_ATOMS = [:"(?<model_name>\\w*):(?<param>\\w*)"]
+  MODEL_INSTANCE_RESOLVER = Proc.new{ |data| data[:model_name].classify.constantize.find(data[:param]) }
+  MODEL_INSTANCE_GENERATOR = Proc.new{ |data| "#{data.class.name}:#{data.id}" }
+
   HANDLE_PARSER_ATOMS = [:"@",:"(?<handle>\\w*)"]
   extend ActiveSupport::Concern
   included do
@@ -32,13 +39,23 @@ module SupportsPointer
         end
       elsif(!args[:template] && SupportsPointer.const_defined?(name.to_s.upcase+"_PARSER_ATOMS"))
           @@pointers[self.name.to_sym][name.to_sym][:matcher] = Regexp::Template.new(atoms:self.const_get((name.to_s.upcase+"_PARSER_ATOMS").to_sym)).rx
+          if(!args[:resolve])
+            @@pointers[self.name.to_sym][name.to_sym][:resolve] = self.const_get(name.to_s.upcase+"_RESOLVER")
+          end
+          if(!args[:generate])
+            @@pointers[self.name.to_sym][name.to_sym][:generate] = self.const_get(name.to_s.upcase+"_GENERATOR")
+          end
       elsif(!args[:template] && !!args[:parse] )
           @@pointers[self.name.to_sym][name.to_sym][:parser] = args[:parse]
       end
       if(!!args[:resolve])
         @@pointers[self.name.to_sym][name.to_sym][:resolve] = args[:resolve]
       end
+      if(!!args[:generate])
+        @@pointers[self.name.to_sym][name.to_sym][:generate] = args[:generate]
+      end
     end
+
     def self.uses_pointer(name, **args)
       parser = args[:from].pointers[name.to_sym]
       if(!@@pointers[self.name.to_sym])
