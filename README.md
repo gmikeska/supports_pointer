@@ -48,7 +48,7 @@ uses_pointer :handle, from:User
 
 This will allow the Widget class to access the handle pointer.
 
-A pointer can be parsed by calling ```ruby parse_pointer``` on any model or object
+A pointer can be parsed by calling ```parse_pointer``` on any model or object
 which supports the pointer type in question.
 
 ## Installation
