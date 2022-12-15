@@ -24,8 +24,11 @@ pointer_resolution {|data| some_block_to_resolve_pointer}
 pointer_generation {|data| some_block_to_generate_pointer}
 ```
 
-Pointers are inherited like any other method. However, pointers can also be parsed by
-other classes. Lets say you have a "handle" pointer defined directly on class User,
+Pointers are inherited like any other method. For instance, model & model instance
+can be declared on ApplicationRecord to allow parsing from any model in the project.
+However, pointers can also be parsed by
+other classes where the declaration is outside the class hierarchy.
+Lets say you have a "handle" pointer defined directly on class User,
 of the format "@username"
 
 ```ruby
