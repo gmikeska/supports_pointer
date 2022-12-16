@@ -13,12 +13,12 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/settings_models", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # SettingsModel. As you add validations to SettingsModel, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    skip("Add a hash of attributes invalid for your model")
   }
 
   let(:invalid_attributes) {
@@ -77,12 +77,12 @@ RSpec.describe "/settings_models", type: :request do
         }.to change(SettingsModel, :count).by(0)
       end
 
-    
+
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post settings_models_url, params: { settings_model: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 
@@ -108,13 +108,13 @@ RSpec.describe "/settings_models", type: :request do
     end
 
     context "with invalid parameters" do
-    
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         settings_model = SettingsModel.create! valid_attributes
         patch settings_model_url(settings_model), params: { settings_model: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 
