@@ -48,7 +48,7 @@ class BlogPostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog_post
-      @blog_post = BlogPost.find(params[:id])
+      @blog_post = BlogPost.find_by slug:params[:slug]
     end
 
     # Only allow a list of trusted parameters through.

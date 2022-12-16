@@ -1,7 +1,16 @@
 class SettingsModel < ApplicationRecord
   include SupportsPointer
-  belongs_to :configurable, polymorphic: true
+  belongs_to :configurable, polymorphic: true, optional:true
   serialize :data
+
+
+  # This model is being used to develop a pointer
+  # methodology for information stored, for instance,
+  # in a data hash on the object. It is under active development
+  # and not yet included in the specs.
+
+
+
 
   parses_pointer :key, parse:Proc.new{|key| return key.split('.') }
   pointer_generation :key do |data|

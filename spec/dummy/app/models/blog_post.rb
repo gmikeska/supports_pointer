@@ -5,6 +5,16 @@ class BlogPost < ApplicationRecord
     post.slug = post.name.parameterize.underscore
   end
 
+  def to_param
+    slug
+  end
+  def self.find(arg)
+    if(arg.to_i == 0 && arg != "0")
+      return find_by slug:arg
+    else
+      super(arg)
+    end
+  end
   # parses_pointer :blog_post, template:Regexp::Template.new(atoms:[:"\\^",:"(?<slug>\\w*)"]).rx
   # pointer_resolution :blog_post do |data|
   #   BlogPost.find_by slug:data[:slug]
@@ -13,7 +23,5 @@ class BlogPost < ApplicationRecord
   #   "^#{data.slug}"
   # end
 
-  def to_pointer
-    return BlogPost.generate_blog_post_pointer(self)
-  end
+
 end

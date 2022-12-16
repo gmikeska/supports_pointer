@@ -10,7 +10,7 @@ module SupportsPointer
 
   MODEL_INSTANCE_PARSER_ATOMS = [:"(?<model_name>\\w*):(?<param>\\w*)"]
   MODEL_INSTANCE_RESOLVER = Proc.new{ |data| data[:model_name].classify.constantize.find(data[:param]) }
-  MODEL_INSTANCE_GENERATOR = Proc.new{ |data| "#{data.class.name}:#{data.id}" }
+  MODEL_INSTANCE_GENERATOR = Proc.new{ |data| "#{data.class.name}:#{data.to_param}" }
 
   HANDLE_PARSER_ATOMS = [:"@",:"(?<handle>\\w*)"]
   extend ActiveSupport::Concern
