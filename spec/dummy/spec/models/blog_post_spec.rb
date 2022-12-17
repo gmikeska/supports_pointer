@@ -10,4 +10,8 @@ RSpec.describe BlogPost, type: :model do
   it "can resolve pointers" do
     expect(BlogPost.resolve_pointer("BlogPost:#{blog_post.slug}")).to eq(blog_post)
   end
+
+  it "can resolve user mentions" do
+    expect(BlogPost.resolve_pointer(blog_post.author.mention)).to eq(blog_post.author)
+  end
 end

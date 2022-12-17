@@ -4125,3 +4125,809 @@ Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.2ms | Allocations: 7739
   Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 61)
   Rendered settings_models/show.html.erb (Duration: 1.1ms | Allocations: 538)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["created_at", "2022-12-16 21:18:33.078729"], ["updated_at", "2022-12-16 21:18:33.078729"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["created_at", "2022-12-16 21:18:33.099542"], ["updated_at", "2022-12-16 21:18:33.099542"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Load (0.1ms)[0m  [1m[34mSELECT "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."slug" = ? LIMIT ?[0m  [["slug", "test_title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-16 21:18:33.108780"], ["updated_at", "2022-12-16 21:18:33.108780"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-16 21:18:33.111455"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-16 21:18:33.113943"], ["updated_at", "2022-12-16 21:18:33.113943"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-16 21:18:33.115882"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-16 21:18:33.123534"], ["updated_at", "2022-12-16 21:18:33.123534"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-16 21:18:33.125829"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-16 15:18:33 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 2.4ms | Allocations: 1744)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2236)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2572)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 0.4ms | Allocations: 7739)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-16 21:18:33.185586"], ["updated_at", "2022-12-16 21:18:33.185586"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.2ms | Allocations: 726)
+  Rendered settings_models/edit.html.erb (Duration: 2.1ms | Allocations: 1106)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.7ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-16 21:18:33.194353"], ["updated_at", "2022-12-16 21:18:33.194353"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-16 21:18:33.199371"], ["updated_at", "2022-12-16 21:18:33.199371"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.5ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.2ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 3.0ms | Allocations: 936)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 0.7ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 0.9ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-16 21:18:33.211995"], ["updated_at", "2022-12-16 21:18:33.211995"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.3ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.6ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:50:41.172255"], ["updated_at", "2022-12-17 13:50:41.172255"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:50:41.195952"], ["updated_at", "2022-12-17 13:50:41.195952"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:50:41.199846"], ["updated_at", "2022-12-17 13:50:41.199846"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:50:41.201150"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:50:41.204480"], ["updated_at", "2022-12-17 13:50:41.204480"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:50:41.206785"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:50:41.213961"], ["updated_at", "2022-12-17 13:50:41.213961"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:50:41.215122"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-17 07:50:41 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 15.5ms | Allocations: 3989)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 16.7ms | Allocations: 4481)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 4820)
+Completed 200 OK in 26ms (Views: 20.2ms | ActiveRecord: 0.3ms | Allocations: 9981)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-17 13:50:41.291698"], ["updated_at", "2022-12-17 13:50:41.291698"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.4ms | Allocations: 729)
+  Rendered settings_models/edit.html.erb (Duration: 2.2ms | Allocations: 1105)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:50:41.301066"], ["updated_at", "2022-12-17 13:50:41.301066"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.1ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:50:41.304383"], ["updated_at", "2022-12-17 13:50:41.304383"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.7ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.2ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 2.8ms | Allocations: 936)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 2.6ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 3.2ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:50:41.320909"], ["updated_at", "2022-12-17 13:50:41.320909"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.5ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:25.575644"], ["updated_at", "2022-12-17 13:51:25.575644"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:51:25.614164"], ["updated_at", "2022-12-17 13:51:25.614164"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:25.627690"], ["updated_at", "2022-12-17 13:51:25.627690"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:51:25.629077"], ["updated_at", "2022-12-17 13:51:25.629077"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Load (0.1ms)[0m  [1m[34mSELECT "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."slug" = ? LIMIT ?[0m  [["slug", "test_title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:25.632511"], ["updated_at", "2022-12-17 13:51:25.632511"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:25.633897"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:25.636754"], ["updated_at", "2022-12-17 13:51:25.636754"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:25.640465"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:25.645958"], ["updated_at", "2022-12-17 13:51:25.645958"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:25.647194"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-17 07:51:25 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 2.3ms | Allocations: 1744)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2236)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2572)
+Completed 200 OK in 13ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 7791)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-17 13:51:25.712454"], ["updated_at", "2022-12-17 13:51:25.712454"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.4ms | Allocations: 726)
+  Rendered settings_models/edit.html.erb (Duration: 2.3ms | Allocations: 1106)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.3ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:25.721046"], ["updated_at", "2022-12-17 13:51:25.721046"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.3ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:25.724034"], ["updated_at", "2022-12-17 13:51:25.724034"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.6ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 2.5ms | Allocations: 936)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.0ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 1.2ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:25.739304"], ["updated_at", "2022-12-17 13:51:25.739304"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.4ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:31.967946"], ["updated_at", "2022-12-17 13:51:31.967946"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:51:32.004700"], ["updated_at", "2022-12-17 13:51:32.004700"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:32.019558"], ["updated_at", "2022-12-17 13:51:32.019558"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.1ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:51:32.021072"], ["updated_at", "2022-12-17 13:51:32.021072"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Load (0.1ms)[0m  [1m[34mSELECT "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."slug" = ? LIMIT ?[0m  [["slug", "test_title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:32.024566"], ["updated_at", "2022-12-17 13:51:32.024566"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:32.025710"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:32.028316"], ["updated_at", "2022-12-17 13:51:32.028316"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:32.029718"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:51:32.038948"], ["updated_at", "2022-12-17 13:51:32.038948"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:51:32.040046"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-17 07:51:32 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 2.6ms | Allocations: 1744)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2236)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2572)
+Completed 200 OK in 11ms (Views: 5.6ms | ActiveRecord: 0.3ms | Allocations: 7791)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-17 13:51:32.101129"], ["updated_at", "2022-12-17 13:51:32.101129"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.2ms | Allocations: 726)
+  Rendered settings_models/edit.html.erb (Duration: 2.1ms | Allocations: 1106)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:32.110670"], ["updated_at", "2022-12-17 13:51:32.110670"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.1ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:32.114270"], ["updated_at", "2022-12-17 13:51:32.114270"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.7ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 2.2ms | Allocations: 936)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.4ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 1.7ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (1.0ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:51:32.128413"], ["updated_at", "2022-12-17 13:51:32.128413"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.3ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.152872"], ["updated_at", "2022-12-17 13:52:50.152872"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.2ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:52:50.189303"], ["updated_at", "2022-12-17 13:52:50.189303"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.202535"], ["updated_at", "2022-12-17 13:52:50.202535"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.1ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:52:50.203889"], ["updated_at", "2022-12-17 13:52:50.203889"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Load (0.1ms)[0m  [1m[34mSELECT "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."slug" = ? LIMIT ?[0m  [["slug", "test_title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.208096"], ["updated_at", "2022-12-17 13:52:50.208096"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.4ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:52:50.210590"], ["updated_at", "2022-12-17 13:52:50.210590"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.231596"], ["updated_at", "2022-12-17 13:52:50.231596"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:52:50.232844"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.235826"], ["updated_at", "2022-12-17 13:52:50.235826"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:52:50.237841"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "MyString"], ["handle", nil], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:52:50.245078"], ["updated_at", "2022-12-17 13:52:50.245078"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "handle" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["handle", "dude"], ["updated_at", "2022-12-17 13:52:50.246758"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-17 07:52:50 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 2.2ms | Allocations: 1739)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2231)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2567)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 7785)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-17 13:52:50.303566"], ["updated_at", "2022-12-17 13:52:50.303566"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.1ms | Allocations: 726)
+  Rendered settings_models/edit.html.erb (Duration: 1.9ms | Allocations: 1106)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:52:50.311925"], ["updated_at", "2022-12-17 13:52:50.311925"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.1ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:52:50.313566"], ["updated_at", "2022-12-17 13:52:50.313566"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.3ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 1.5ms | Allocations: 927)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 0.7ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 0.9ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:52:50.324418"], ["updated_at", "2022-12-17 13:52:50.324418"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.6ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:28.947760"], ["updated_at", "2022-12-17 13:55:28.947760"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.1ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:55:28.984062"], ["updated_at", "2022-12-17 13:55:28.984062"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:28.997323"], ["updated_at", "2022-12-17 13:55:28.997323"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.1ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:55:28.998694"], ["updated_at", "2022-12-17 13:55:28.998694"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Load (0.1ms)[0m  [1m[34mSELECT "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."slug" = ? LIMIT ?[0m  [["slug", "test_title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:29.002051"], ["updated_at", "2022-12-17 13:55:29.002051"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBlogPost Create (0.1ms)[0m  [1m[32mINSERT INTO "blog_posts" ("name", "slug", "body", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test Title"], ["slug", "test_title"], ["body", "MyText"], ["author_id", 1], ["created_at", "2022-12-17 13:55:29.003503"], ["updated_at", "2022-12-17 13:55:29.003503"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:29.006662"], ["updated_at", "2022-12-17 13:55:29.006662"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:29.011736"], ["updated_at", "2022-12-17 13:55:29.011736"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "handle", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "dude@dude.com"], ["handle", "dude"], ["password", "[FILTERED]"], ["created_at", "2022-12-17 13:55:29.017861"], ["updated_at", "2022-12-17 13:55:29.017861"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."handle" = ? LIMIT ?[0m  [["handle", "dude"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/settings_models/new" for 127.0.0.1 at 2022-12-17 07:55:29 -0600
+Processing by SettingsModelsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings_models/new.html.erb within layouts/application
+  Rendered settings_models/_form.html.erb (Duration: 3.1ms | Allocations: 1744)
+  Rendered settings_models/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2236)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 2572)
+Completed 200 OK in 14ms (Views: 7.5ms | ActiveRecord: 0.3ms | Allocations: 7791)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSettingsModel Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "settings_models"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.2ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- MyString\n"], ["created_at", "2022-12-17 13:55:29.082368"], ["updated_at", "2022-12-17 13:55:29.082368"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/edit.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 1.8ms | Allocations: 726)
+  Rendered settings_models/edit.html.erb (Duration: 3.1ms | Allocations: 1106)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:55:29.091511"], ["updated_at", "2022-12-17 13:55:29.091511"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.1ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:55:29.095049"], ["updated_at", "2022-12-17 13:55:29.095049"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/index.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.3ms | Allocations: 175)
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered settings_models/index.html.erb (Duration: 1.7ms | Allocations: 936)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  Rendering settings_models/new.html.erb
+  Rendered settings_models/_form.html.erb (Duration: 0.8ms | Allocations: 587)
+  Rendered settings_models/new.html.erb (Duration: 1.1ms | Allocations: 687)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSettingsModel Create (0.4ms)[0m  [1m[32mINSERT INTO "settings_models" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "--- Data\n"], ["created_at", "2022-12-17 13:55:29.109969"], ["updated_at", "2022-12-17 13:55:29.109969"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering settings_models/show.html.erb
+  Rendered settings_models/_settings_model.html.erb (Duration: 0.4ms | Allocations: 61)
+  Rendered settings_models/show.html.erb (Duration: 1.4ms | Allocations: 538)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m

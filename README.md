@@ -39,8 +39,8 @@ end
 ```
 
 In the above example only the "User" model will be able to generate, parse or resolve
-handle pointers. To allow another model (say, "Widget", for example) you'd add the following
-to class Widget:
+"handle" pointers. To allow another model (say, "Widget", for example) to resolve user handles
+ you'd add the following to class Widget:
 
 ```ruby
 uses_pointer :handle, from:User
@@ -49,7 +49,8 @@ uses_pointer :handle, from:User
 This will allow the Widget class to access the handle pointer.
 
 A pointer can be parsed by calling ```parse_pointer``` on any model or object
-which supports the pointer type in question.
+which supports the pointer type in question. In situations where a string matches
+the regexp of multiple pointer types, you can specify the pointer_type used for parsing with ```parse_{handle_name}_pointer``` such as ```parse_model_pointer``` or ```parse_model_instance_pointer```.
 
 When declaring model & model instance pointers, it may be helpful to declare a ```to_pointer``` method, returning ```generate_model_pointer``` and ```generate_model_instance_pointer```
 respectively:
@@ -62,6 +63,12 @@ respectively:
     return generate_model_instance_pointer(self)
   end
 ```
+
+For more information, see the BlogPost and User models in ```/spec/dummy/models```.
+Note that while the dummy app contains a model called SettingsModel, this is being
+used to develop a pointer methodology to reference data inside a model's hash attributes.
+Documentation will be updated when the methodology is complete.
+
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -81,7 +88,7 @@ $ gem install supports_pointer
 ```
 
 ## Contributing
-Contribution directions go here.
+Feel free to fork the repo. Pull requests are welcome for features and bug-fixes!
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
