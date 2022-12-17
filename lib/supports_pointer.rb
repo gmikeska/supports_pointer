@@ -18,6 +18,11 @@ module SupportsPointer
     @@pointers = {}
     @@segments = {}
 
+    # Declares a pointer type on the current class object
+    #
+    # @param name [Symbol] the name of the pointer type (ie: :model, etc..)
+    # @param args [Hash] the hash of pointer options to be declared for this pointer
+    # @return [Hash] the pointer type's data hash.
     def self.parses_pointer(name, **args)
       if(!@@pointers[self.name.to_sym])
         @@pointers[self.name.to_sym] = {}
@@ -54,8 +59,14 @@ module SupportsPointer
       if(!!args[:generate])
         @@pointers[self.name.to_sym][name.to_sym][:generate] = args[:generate]
       end
+      return !!@@pointers[self.name.to_sym][name.to_sym]
     end
 
+    # Grants the current class access to a pointer type from another class
+    #
+    # @param name [Symbol] the name of the pointer type (ie: :model, etc..)
+    # @param args [Symbol] use :from to specify the class from which to grant access)
+    # @return [Hash] the pointer type's data hash
     def self.uses_pointer(name, **args)
       parser = args[:from].pointers[name.to_sym]
       if(!@@pointers[self.name.to_sym])
@@ -64,10 +75,19 @@ module SupportsPointer
       if(!@@pointers[self.name.to_sym][name])
         @@pointers[self.name.to_sym][name] = parser
       end
+      @@pointers[self.name.to_sym][name]
     end
+
+    # Returns a hash of all pointers for a given instance's class
+    #
+    # @return [Hash] the data hash of all pointer types
     def pointers
       self.class.pointers
     end
+
+    # Returns a hash of all pointers for a given class
+    #
+    # @return [Hash] the data hash of all pointer types
     def self.pointers
       if(!!@@pointers && !!@@pointers[self.name.to_sym])
         if(superclass.respond_to?(:pointers))
@@ -84,10 +104,16 @@ module SupportsPointer
       end
     end
 
+    # Returns an array of all pointer names declared on a class
+    #
+    # @return [Array] the array of pointer type names
     def self.pointer_types
       return self.pointers.keys
     end
 
+    # Returns whether or not a particular string matches any known pointer type
+    # @param ptr the string to be matched as a potential pointer
+    # @return [Boolean] true if ptr is a pointer, false otherwise
     def self.is_pointer?(ptr)
       begin
         result = !!self.resolve_pointer(ptr)
@@ -97,6 +123,9 @@ module SupportsPointer
       return result
     end
 
+    # Returns the pointer type name for a particular string
+    # @param ptr [String] the string to be matched against each pointer type
+    # @return [Symbol] the string's pointer type name
     def self.pointer_type(ptr)
       result = nil
       self.pointers.each do |type, data|
@@ -112,6 +141,10 @@ module SupportsPointer
       return result
     end
 
+    # Parses a pointer into a Hash of data ready for resolution
+    # @param ptr [String] the string to be parsed as a pointer
+    # @param args [Hash] use :type to specify the pointer type for parsing
+    # @return [Hash] the data parsed from ptr
     def self.parse_pointer(ptr, **args)
 
       if(!!args[:type])
@@ -125,9 +158,11 @@ module SupportsPointer
       else
         raise NameError.new("Unknown pointer type '#{pointer_name}'.", pointer_name)
       end
-      return result
     end
 
+    # Resolves a pointer into the referenced object
+    # @param ptr [String] the string to be parsed as a pointer
+    # @return the object referenced by ptr
     def self.resolve_pointer(ptr)
       data = self.parse_pointer(ptr)
       if(!!data && !!data[:type])
@@ -135,15 +170,28 @@ module SupportsPointer
       end
     end
 
+    # Updates the Proc object used to generate a pointer
+    # @param name [Symbol] the pointer type to be updated
+    # @param block the block to be used for pointer generation
+    # @return [Hash] the pointer type's data hash
     def self.pointer_generation(name,&block)
       @@pointers[self.name.to_sym][name.to_sym][:generate] = block.to_proc
+      @@pointers[self.name.to_sym][name.to_sym]
     end
 
+    # Updates the Proc object used to resolve a pointer
+    # @param name [Symbol] the pointer type to be updated
+    # @param block the block to be used for pointer resolution
+    # @return [Hash] the pointer type's data hash
     def self.pointer_resolution(name,&block)
-      pointers[name.to_sym][:resolve] = block.to_proc
+      @@pointers[self.name.to_sym][name.to_sym][:resolve] = block.to_proc
+      @@pointers[self.name.to_sym][name.to_sym]
     end
-
-    def self.method_missing(m,*args, &block)
+    # Implements the parse, resolve and generate behavior for each pointer type
+    # @param m [Symbol] the method name being called (such as ```generate_model_pointer```)
+    # @param args [Hash] the arguments being passed to the called method
+    # @return the return value for the called method
+    def self.method_missing(m,*args)
 
       if(m.to_s.match?(/resolve_(?<pointer_name>\w*)_pointer/))
         pointer_name = m.to_s.match(/resolve_(?<pointer_name>\w*)_pointer/)[:pointer_name]

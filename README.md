@@ -6,8 +6,8 @@ Add the following to your model:
 ```ruby
   parses_pointer :pointer_name_as_symbol,
     template:/regexp(?<with_captures>.*)for(?<each_field>)/,
-    resolve:{|data| data[:with_captures].find_by(some_param:data[:other_capture]),
-    generate:{|target| "#{target.some_attr}:#{target.other_attr}"}
+    resolve:Proc.new{|data| data[:with_captures].find_by(some_param:data[:other_capture]),
+    generate:Proc.new{|target| "#{target.some_attr}:#{target.other_attr}"}
 ```
 
 if the pointer being declared is a model pointer, or model_instance pointer, simply declare:
