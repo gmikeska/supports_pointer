@@ -50,7 +50,7 @@ This will allow the Widget class to access the handle pointer.
 
 A pointer can be parsed by calling ```parse_pointer``` on any model or object
 which supports the pointer type in question. In situations where a string matches
-the regexp of multiple pointer types, you can specify the pointer_type used for parsing with ```parse_{handle_name}_pointer``` such as ```parse_model_pointer``` or ```parse_model_instance_pointer```.
+the regexp of multiple pointer types, you can specify the pointer_type used for parsing with ```parse_{pointer_type_name}_pointer``` such as ```parse_model_pointer``` or ```parse_model_instance_pointer```.
 
 When declaring model & model instance pointers, it may be helpful to declare a ```to_pointer``` method, returning ```generate_model_pointer``` and ```generate_model_instance_pointer```
 respectively:
