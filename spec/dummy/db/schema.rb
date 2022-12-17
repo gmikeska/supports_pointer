@@ -15,8 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_180536) do
     t.string "name"
     t.string "slug"
     t.text "body"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_blog_posts_on_author_id"
   end
 
   create_table "settings_models", force: :cascade do |t|

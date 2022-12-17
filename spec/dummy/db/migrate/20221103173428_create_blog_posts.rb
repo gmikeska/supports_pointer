@@ -4,7 +4,7 @@ class CreateBlogPosts < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :slug, uniqe:true
       t.text :body
-
+      t.belongs_to :author
       t.timestamps
     end
   end
