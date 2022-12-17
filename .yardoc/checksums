@@ -1,7 +1,0 @@
-lib/core_ext/regexp.rb 69545c4349544132be498d5ce7178cae6c3bf7d2
-lib/core_ext/string.rb 817b6590396f82536f1d2db41056550c86fbdb1b
-lib/supports_pointer.rb f14a1ae20914d61acbc171bedba51a40394e75d5
-lib/terminal/terminal.rb 0de7b6bb21947c19e3f8dabcf70d06637db87b38
-lib/supports_pointer/railtie.rb 5f3932c8a3290d1eeafe76059965de52d91221dc
-lib/supports_pointer/version.rb d770c3f499ec38b1f441b6ce1cc0aa291f3466d6
-lib/terminal/terminal_formatting_support.rb 3a1a6925ad91db3e002b5515cfcbd0d0b8fa8cea

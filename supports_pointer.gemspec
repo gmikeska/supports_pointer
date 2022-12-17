@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/supports_pointer"
   spec.metadata["changelog_uri"] = spec.homepage+"/blob/master/CHANGELOG.MD"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
