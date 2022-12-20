@@ -26,7 +26,7 @@ pointer_generation {|data| some_block_to_generate_pointer}
 
 Pointers are inherited like any other method. For instance, model & model instance
 can be declared on ApplicationRecord to allow parsing from any model in the project.
-However, pointers can also be parsed by
+However, pointers can also be parsed/resolved by
 other classes where the declaration is outside the class hierarchy.
 Lets say you have a "handle" pointer defined directly on class User,
 of the format "@username"
@@ -48,9 +48,12 @@ uses_pointer :handle, from:User
 
 This will allow the Widget class to access the handle pointer.
 
-A pointer can be parsed by calling ```parse_pointer``` on any model or object
+To resolve a pointer , use ```Model.resolve_pointer```
+
+A pointer can be resolved into its underlying object by a call to ```resolve_pointer``` on any model or object
 which supports the pointer type in question. In situations where a string matches
-the regexp of multiple pointer types, you can specify the pointer_type used for parsing with ```parse_{pointer_type_name}_pointer``` such as ```parse_model_pointer``` or ```parse_model_instance_pointer```.
+the regexp of multiple pointer types, you can specify the pointer_type used for parsing with ```resolve_{pointer_type_name}_pointer``` such as ```resolve_model_pointer``` or ```resolve_model_instance_pointer```. If you'd like access to the raw data parsed from the pointer,
+```parse_pointer``` and ```parse_{pointer_type_name}_pointer``` are also available.
 
 When declaring model & model instance pointers, it may be helpful to declare a ```to_pointer``` method, returning ```generate_model_pointer``` and ```generate_model_instance_pointer```
 respectively:
